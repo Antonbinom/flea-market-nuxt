@@ -1,0 +1,27 @@
+* {
+	box-sizing: border-box;
+	outline: 0;
+}
+
+body {
+	font-family: 'Anglecia Pro Display',Verdana,Arial,sans-serif;
+	margin: 0px;
+	padding: 0px;
+	color: #000;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+body.menu_opened, body.search_opened {
+	overflow:hidden;
+	position:fixed;
+}
+body.menu_opened ::-webkit-scrollbar, body.search_opened ::-webkit-scrollbar {
+    display: none;
+}
+
+main {
+	padding-top: 35px;
+	padding-bottom:50px;
+	overflow: hidden;
+}
