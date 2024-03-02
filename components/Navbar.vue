@@ -4,7 +4,7 @@
       <ul class="menu-list">
         <li class="menu-list__item" v-for="link in menuLinks" :key="link.name">
           <NuxtLink class="menu-link" :to="link.path"
-            >{{ link.text }}
+            >{{ link.title }}
           </NuxtLink>
         </li>
       </ul>
@@ -13,33 +13,7 @@
 </template>
 
 <script setup>
-const menuLinks = [
-  {
-    name: "home",
-    path: "/",
-    text: "Прилавок",
-  },
-  {
-    name: "how-buy",
-    path: "/how-buy",
-    text: "Как купить",
-  },
-  {
-    name: "about",
-    path: "/about",
-    text: "О Нас",
-  },
-  {
-    name: "contacts",
-    path: "/contacts",
-    text: "Контакты",
-  },
-  {
-    name: "reviews",
-    path: "/reviews",
-    text: "Отзывы",
-  },
-];
+import { menuLinks } from "@/data/menuLinks";
 </script>
 
 <style scoped>

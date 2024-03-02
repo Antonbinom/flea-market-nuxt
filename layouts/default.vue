@@ -4,7 +4,7 @@
     <Navbar />
     <Container>
       <main>
-        <Breadcrumbs />
+        <!-- <Breadcrumbs /> -->
         <slot />
       </main>
     </Container>

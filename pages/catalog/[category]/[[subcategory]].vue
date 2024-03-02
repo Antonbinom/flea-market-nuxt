@@ -3,6 +3,9 @@
 </template>
 
 <script setup>
+definePageMeta({
+  layout: "catalog",
+});
 useHead({
   title: "Контакты",
 });
