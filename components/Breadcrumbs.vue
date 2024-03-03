@@ -36,7 +36,7 @@ const currentPage = computed(() => {
   if (route.path.includes("product")) {
     return products.find((product) => product.path === route.path);
   }
-  return menuLinks.find((item) => item.path === route.path).title;
+  return menuLinks.find((item) => item.path === route.path)?.title;
 });
 
 const currentCategory = computed(() => {

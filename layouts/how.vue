@@ -5,9 +5,11 @@
     <Container>
       <main>
         <Breadcrumbs />
+
         <slot />
       </main>
     </Container>
+    <Form />
     <Footer />
   </div>
 </template>

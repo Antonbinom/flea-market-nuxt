@@ -6,9 +6,12 @@
 import { products } from "~/data/products";
 const route = useRoute();
 const filteredProducts = computed(() => {
-  return products.filter(
-    (product) => product.category === route.params.category
-  );
+  return products.filter((product) => {
+    return (
+      product.category === route.params.category &&
+      product.subcategory === route.params.subcategory
+    );
+  });
 });
 
 definePageMeta({

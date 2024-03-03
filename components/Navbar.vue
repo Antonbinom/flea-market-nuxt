@@ -21,7 +21,6 @@ import { menuLinks } from "@/data/menuLinks";
   height: 30px;
   background: #232323;
   font-family: Helvetica;
-  /* padding: 0px 65px; */
 }
 .menu-list {
   height: 30px;

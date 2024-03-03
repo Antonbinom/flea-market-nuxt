@@ -1,5 +1,5 @@
 <template>
-  <Products />
+  <Products :products="products" />
 </template>
 
 <script setup>
@@ -9,4 +9,5 @@ definePageMeta({
 useHead({
   title: "ВИНТАЖНЫЕ НАХОДКИ С БЛОШИНЫХ РЫНКОВ РАЗНЫХ СТРАН",
 });
+import { products } from "@/data/products";
 </script>

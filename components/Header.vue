@@ -15,11 +15,7 @@
 
         <a href="tel:+79858864155" class="phone">+7 985 886 41 55</a>
 
-        <a
-          href="https://flea-market.ru/about/#"
-          class="search"
-          title="Поиск по сайту"
-        >
+        <NuxtLink to="/search" class="search" title="Поиск по сайту">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.5 17.5">
             <ellipse
               class="search-svg-style"
@@ -36,7 +32,7 @@
               y2="16.75"
             ></line>
           </svg>
-        </a>
+        </NuxtLink>
         <a href="https://flea-market.ru/basket/" class="basket" title="Корзина">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.5 17.5">
             <path

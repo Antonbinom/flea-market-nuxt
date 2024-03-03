@@ -2,12 +2,12 @@
   <div>
     <Header />
     <Navbar />
-    <Container>
-      <main>
+    <main>
+      <Container>
         <Breadcrumbs />
-        <slot />
-      </main>
-    </Container>
+      </Container>
+      <slot />
+    </main>
     <Footer />
   </div>
 </template>

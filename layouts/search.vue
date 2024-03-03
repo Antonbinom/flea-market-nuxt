@@ -1,10 +1,7 @@
 <template>
   <div>
-    <Header />
-    <Navbar />
     <Container>
       <main>
-        <Breadcrumbs />
         <slot />
       </main>
     </Container>

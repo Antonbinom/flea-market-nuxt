@@ -2,6 +2,7 @@ export const products = [
   {
     path: "/product/vintazhnaya-farforovaya-statuetka-angliya-royal-doulton",
     category: "statuetki",
+    subcategory: "farforovye",
     title:
       "Винтажная фарфоровая статуэтка Англия Royal Doulton 4720 Spring Весна",
     img: "product.jpg",
@@ -22,6 +23,7 @@ export const products = [
   {
     path: "/product/vintazhnaya-farforovaya-statuetka-dama-v-zelyonoj-shlyapke-goebel",
     category: "statuetki",
+    subcategory: "farforovye",
     title: "Винтажная фарфоровая статуэтка Дама в зелёной шляпке Goebel",
     img: "product.jpg",
     text: "Лот 7682. Винтажная фарфоровая статуэтка Дама в зелёной шляпке Goebel",
@@ -33,6 +35,7 @@ export const products = [
     title: "Винтажное серебряное кольцо Англия 1978 год",
     img: "product.jpg",
     text: "Лот 7681. Винтажное серебряное кольцо Англия 1978 год",
+    lot: 7681,
     price: 6500,
   },
   {
@@ -42,7 +45,16 @@ export const products = [
       "Антикварный английский маникюрный набор Boots Pure Drug Company 1921 год",
     img: "product.jpg",
     text: "Лот 7680. Антикварный английский маникюрный набор Boots Pure Drug Company 1921 год",
+    lot: 7680,
     price: 28000,
+    description: [
+      "Англия, город Бирмингем, мануфактура Boots Pure Drug Company.",
+      "1921 год.",
+      "Рукояти и крышечка флакона выполнены из серебра, все клейма хорошо сохранились.",
+      "Ножницы изготовлены в городе Шеффилд.",
+      "Размер футляра 17,5x11 см.",
+      "Приборы в хорошем состоянии.",
+    ],
   },
   {
     path: "/product/antikvarnaya-vaza-s-ruchkoj-dlya-fruktov-angliya-8711/",
@@ -63,15 +75,24 @@ export const products = [
   },
   {
     path: "/product/vintazhnye-serebryanye-sergi-makintosh-kit-heath-8709/",
-    category: "statuetki",
+    category: "ukrasheniya-aksessuary",
     title: "Винтажные серебряные серьги Макинтош Kit Heath",
     img: "product.jpg",
     text: "Лот 7677. Винтажные серебряные серьги Макинтош Kit Heath",
+    lot: 7677,
     price: 9900,
+    description: [
+      "Лондон, мануфактура J Ltd.",
+      "1978 год.",
+      "Серебро.",
+      "Размер 18.",
+      "Вес 4 гр.",
+    ],
   },
   {
     path: "/product/antikvarnaya-serebryanaya-lozhka-dlya-chaya-trav-angliya-caddy-spoon-19-vek-1853-god-8708/",
-    category: "statuetki",
+    category: "stolovye-pribory",
+    subcategory: "serebryanye-lozhki",
     title:
       "Антикварная серебряная ложка для чая трав Англия Caddy Spoon 19 век 1853 год",
     img: "product.jpg",
@@ -80,7 +101,8 @@ export const products = [
   },
   {
     path: "/product/tarelka-vintazhnaya-dekorativnaya-nastennaya-farfor-franklin-mint-bill-bell-noev-kovcheg-two-by-two-8707/",
-    category: "statuetki",
+    category: "dekorativnye-tarelki",
+    subcategory: "nastennye",
     title:
       "Тарелка винтажная декоративная настенная Фарфор Franklin Mint Bill Bell Ноев ковчег Two by Two",
     img: "product.jpg",

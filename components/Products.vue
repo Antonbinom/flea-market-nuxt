@@ -26,56 +26,19 @@
 </template>
 
 <script setup>
-import { products } from "@/data/products";
+defineProps({
+  products: Array,
+});
 </script>
 
 <style scoped>
-/* .products {
-  margin: 0px -10px;
-}
-.product {
-  padding: 10px;
-  margin-top: 15px;
-  flex: 0 0 50%;
-}
-.product-link {
-  text-decoration: none;
-}
-.product-images .mobile {
-  display: block;
-}
-.product-images .desktop {
-  display: none;
-}
-.products-info {
-  position: static;
-}
-.middle {
-  display: block;
-  text-align: left;
-}
-.product-title {
-  display: block;
-  margin: 10px 0px 0px 0px;
-  height: 30px;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-.product-price {
-  margin-top: 10px;
-} */
-
 .products {
-  margin: 0px -5px;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
 }
-.product {
-  padding: 5px;
-  flex: 0 0 32.729%;
-}
+/* .product {
+} */
 .product-link {
   display: block;
   position: relative;
