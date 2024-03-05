@@ -10,6 +10,7 @@
           type="text"
           placeholder="Что будем искать?"
           autocomplete="off"
+          @keydown.enter="setSeachValue"
         />
         <span @click="setSeachValue">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.5 17.5">
@@ -36,6 +37,9 @@
         </div>
         <Products :products="filteredProducts" />
       </div>
+      <Container v-if="searchValue" class="container">
+        <Footer />
+      </Container>
     </div>
   </div>
 </template>
@@ -48,6 +52,7 @@ definePageMeta({
 const inputValue = ref("");
 const searchValue = ref("");
 const setSeachValue = () => {
+  if (searchValue.value === inputValue.value) return;
   searchValue.value = inputValue.value;
 };
 const filteredProducts = computed(() => {
@@ -65,28 +70,30 @@ const filteredProducts = computed(() => {
 </script>
 
 <style scoped>
+.container {
+  width: 100%;
+}
 #search {
   /* display: none; */
-  /* position: fixed;
+  position: fixed;
   opacity: 0;
   top: 0px;
   left: 0px;
   right: 0px;
   bottom: 0px;
-  z-index: 10; */
-  /*width: 100%;
-    height: 100vh;*/
-  overflow: hidden;
+  z-index: 10;
+  width: 100%;
+  height: 100vh;
   overflow-y: auto;
   background: #fff;
   -webkit-overflow-scrolling: touch;
 }
 #search .search-wrp {
-  /* position: absolute;
+  position: absolute;
   top: 0px;
   bottom: 0px;
   left: 0px;
-  right: 0px; */
+  right: 0px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -157,5 +164,22 @@ const filteredProducts = computed(() => {
 #search .search-svg-style,
 #search .de--search__search-icons--stroke {
   stroke: #000;
+}
+
+@media (max-width: 767.98px) {
+  #search .search-wrp {
+    padding: 30px 15px;
+  }
+  #search .close {
+    right: 15px;
+    top: 10px;
+  }
+  #search .close img {
+    width: 18px;
+    height: 18px;
+  }
+  #search .result-count {
+    padding: 30px 0px;
+  }
 }
 </style>

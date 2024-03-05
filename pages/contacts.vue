@@ -12,9 +12,20 @@
         <a href="mailto:vintage-market@mail.ru">vintage-market@mail.ru</a><br />
       </p>
       <div class="contact-form">
-        <input type="text" class="form-name" placeholder="Имя" />
-        <input type="text" class="form-email" placeholder="E-mail*" />
-        <textarea class="form-text" placeholder="Сообщение"></textarea>
+        <input
+          type="text"
+          class="contact-form__field form-name"
+          placeholder="Имя"
+        />
+        <input
+          type="text"
+          class="contact-form__field form-email"
+          placeholder="E-mail*"
+        />
+        <textarea
+          class="contact-form__field"
+          placeholder="Сообщение"
+        ></textarea>
         <button>Отправить</button>
       </div>
     </div>
@@ -124,11 +135,15 @@ useHead({
   text-transform: uppercase;
 }
 
-.contact-form .result {
+.result {
   padding: 100px 0px;
   text-align: center;
   color: #fff;
   line-height: 200%;
+}
+
+.contact-form__field {
+  outline: none;
 }
 
 @media (max-width: 767.98px) {

@@ -30,7 +30,7 @@ import { categories } from "@/data/categories";
 }
 .categories-item__link {
   letter-spacing: 0.05em;
-  line-height: 1em;
+  line-height: 20px;
   color: rgba(117, 117, 117, 1);
   text-decoration: none;
   font-weight: 400;

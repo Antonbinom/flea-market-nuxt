@@ -1,3 +1,49 @@
+
+
+@font-face {
+	font-family: 'Anglecia Pro Display';
+	src: url('../fonts/AngleciaProDisplay-Regular.eot');
+	src: local('Anglecia Pro Display'), local('AngleciaProDisplay'),
+			url('../fonts/AngleciaProDisplay-Regular.eot?#iefix') format('embedded-opentype'),
+			url('../fonts/AngleciaProDisplay-Regular.woff2') format('woff2'),
+			url('../fonts/AngleciaProDisplay-Regular.woff') format('woff'),
+			url('../fonts/AngleciaProDisplay-Regular.ttf') format('truetype');
+			/* url('../fonts/AngleciaProDisplay.svg#AngleciaProDisplay') format('svg'); */
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* @font-face {
+	font-family: 'social-icons-v4';
+	src: url('../fonts/social-icons-v4.eot');
+	src: url('../fonts/social-icons-v4.eot') format("embedded-opentype"),
+	url('../fonts/social-icons-v4.woff') format("woff"),
+	url('../fonts/social-icons-v4.ttf') format("truetype"),
+	url('../fonts/social-icons-v4.svg') format("svg")
+}
+
+@font-face {
+	font-family: 'social-icons-v4';
+	font-weight: 400;
+	font-style: normal;
+	src: url('../fonts/social-icons-v4.eot');
+	src: local("social-icons-v4"),
+	url('../fonts/social-icons-v4.eot') format("embedded-opentype"),
+	url('../fonts/social-icons-v4.woff') format("woff"),
+	url('../fonts/social-icons-v4.ttf') format("truetype"),
+	url('../fonts/social-icons-v4.svg') format("svg")
+}
+
+@font-face {
+	font-family: 'social-icons-v4';
+	src: url('../fonts/social-icons-v4.eot');
+	src: url('../fonts/social-icons-v4.eot') format("embedded-opentype"),
+	url('../fonts/social-icons-v4.woff') format("woff"),
+	url('../fonts/social-icons-v4.ttf') format("truetype"),
+	url('../fonts/social-icons-v4.svg') format("svg")
+} */
+
 * {
 	box-sizing: border-box;
 	outline: 0;
@@ -23,5 +69,10 @@ body.menu_opened ::-webkit-scrollbar, body.search_opened ::-webkit-scrollbar {
 main {
 	padding-top: 35px;
 	padding-bottom:50px;
-	overflow: hidden;
+}
+
+p {
+	font-size: 14px;
+	letter-spacing: 0.05em;
+	line-height: 1.8;
 }

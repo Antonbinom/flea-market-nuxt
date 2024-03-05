@@ -6,20 +6,16 @@
         <meta itemprop="name" content="Прилавок" />
       </NuxtLink>
     </li>
-    <li class="breadcrumb-item" v-if="!$route.params.category">
-      <span>{{ currentPage }}</span>
-    </li>
-    <li class="breadcrumb-item" v-if="$route.params.category">
-      <NuxtLink :to="currentCategory.path" v-if="$route.params.subcategory">
-        {{ currentCategory.name }}
-      </NuxtLink>
-      <span v-else>{{ currentCategory.name }}</span>
-    </li>
+
     <li
       class="breadcrumb-item"
-      v-if="$route.params.subcategory && currentSubcategory"
+      v-for="point in currentProduct()"
+      :key="point.name"
     >
-      {{ currentSubcategory.name }}
+      <NuxtLink :to="point.path" v-if="point.path">
+        {{ point.name }}
+      </NuxtLink>
+      <span v-if="!point.path">{{ point.name }}</span>
     </li>
   </ol>
 </template>
@@ -31,26 +27,55 @@ import { products } from "@/data/products";
 
 const route = useRoute();
 
-const currentPage = computed(() => {
-  if (route.params.category) return;
+const currentProduct = () => {
   if (route.path.includes("product")) {
-    return products.find((product) => product.path === route.path);
+    const product = products.find((product) => product.path === route.path);
+    return [
+      {
+        path: `/catalog/${product.category[0]}`,
+        name: product.category[1],
+      },
+      ...(product.subcategory
+        ? [
+            {
+              path: `/catalog/${product.category[0]}/${product.subcategory[0]}`,
+              name: product.subcategory[1],
+            },
+          ]
+        : []),
+      {
+        name: product?.title,
+      },
+    ];
   }
-  return menuLinks.find((item) => item.path === route.path)?.title;
-});
-
-const currentCategory = computed(() => {
-  return categories.find((category) =>
-    category.path.includes(route.params.category)
-  );
-});
-
-const currentSubcategory = computed(() => {
-  if (!currentCategory.value.subcategories) return;
-  return currentCategory.value?.subcategories.find((subcategory) =>
-    subcategory.path.includes(route.params.subcategory)
-  );
-});
+  if (route.path.includes("catalog")) {
+    const category = categories.find((item) =>
+      item.path.includes(route.params.category)
+    );
+    const subcategory = category?.subcategories?.find((sc) =>
+      sc.path.includes(route.params.subcategory)
+    );
+    return [
+      {
+        path: subcategory ? category?.path : "",
+        name: category?.name,
+      },
+      ...(subcategory
+        ? [
+            {
+              name: subcategory?.name,
+            },
+          ]
+        : []),
+    ];
+  }
+  const currentPage = menuLinks.find((link) => link.path === route.path);
+  return [
+    {
+      name: currentPage?.title,
+    },
+  ];
+};
 </script>
 
 <style>
@@ -61,7 +86,6 @@ const currentSubcategory = computed(() => {
   font-size: 13px;
   line-height: 130%;
   display: block;
-  overflow: hidden;
   color: #000;
   padding-right: 48%;
 }

@@ -1,21 +1,20 @@
 <template>
-  <div>
-    <Header />
-    <Navbar />
-    <main>
-      <Container>
-        <Breadcrumbs />
-      </Container>
-      <slot />
-    </main>
+  <Header />
+  <Navbar />
+  <main>
+    <Container>
+      <Breadcrumbs />
+    </Container>
+    <slot />
+  </main>
+  <Container>
     <Footer />
-  </div>
+  </Container>
 </template>
 
 <style scoped>
 main {
   padding-top: 35px;
   padding-bottom: 50px;
-  overflow: hidden;
 }
 </style>

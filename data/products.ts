@@ -1,8 +1,8 @@
 export const products = [
   {
     path: "/product/vintazhnaya-farforovaya-statuetka-angliya-royal-doulton",
-    category: "statuetki",
-    subcategory: "farforovye",
+    category: ["statuetki", "Статуэтки"],
+    subcategory: ["farforovye", "Фарфоровые"],
     title:
       "Винтажная фарфоровая статуэтка Англия Royal Doulton 4720 Spring Весна",
     img: "product.jpg",
@@ -22,8 +22,8 @@ export const products = [
   },
   {
     path: "/product/vintazhnaya-farforovaya-statuetka-dama-v-zelyonoj-shlyapke-goebel",
-    category: "statuetki",
-    subcategory: "farforovye",
+    category: ["statuetki", "Статуэтки"],
+    subcategory: ["farforovye", "Фарфоровые"],
     title: "Винтажная фарфоровая статуэтка Дама в зелёной шляпке Goebel",
     img: "product.jpg",
     text: "Лот 7682. Винтажная фарфоровая статуэтка Дама в зелёной шляпке Goebel",
@@ -31,7 +31,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnoe-serebryanoe-kolco-angliya-1978-god",
-    category: "ukrasheniya-aksessuary",
+    category: ["ukrasheniya-i-aksessuary", "Украшения и аксессуары"],
     title: "Винтажное серебряное кольцо Англия 1978 год",
     img: "product.jpg",
     text: "Лот 7681. Винтажное серебряное кольцо Англия 1978 год",
@@ -40,7 +40,7 @@ export const products = [
   },
   {
     path: "/product/antikvarnyj-anglijskij-manikyurnyj-nabor-boots-pure-drug-company-1921-god",
-    category: "ukrasheniya-aksessuary",
+    category: ["ukrasheniya-i-aksessuary", "Украшения и аксессуары"],
     title:
       "Антикварный английский маникюрный набор Boots Pure Drug Company 1921 год",
     img: "product.jpg",
@@ -58,7 +58,7 @@ export const products = [
   },
   {
     path: "/product/antikvarnaya-vaza-s-ruchkoj-dlya-fruktov-angliya-8711/",
-    category: "vazy",
+    category: ["vazy", "Вазы"],
     title: "Антикварная ваза с ручкой для фруктов Англия",
     img: "product.jpg",
     text: "Лот 7679. Антикварная ваза с ручкой для фруктов Англия",
@@ -66,7 +66,7 @@ export const products = [
   },
   {
     path: "/product/antikvarnye-serebryanye-shipcy-dlya-sahara-lda-angliya-maurice-freeman-1906-god-8710/",
-    category: "stolovye-pribory",
+    category: ["stolovye-pribory", "Столовые приборы"],
     title:
       "Антикварные серебряные щипцы для сахара льда Англия Maurice Freeman 1906 год",
     img: "product.jpg",
@@ -75,7 +75,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnye-serebryanye-sergi-makintosh-kit-heath-8709/",
-    category: "ukrasheniya-aksessuary",
+    category: ["ukrasheniya-i-aksessuary", "Украшения и аксессуары"],
     title: "Винтажные серебряные серьги Макинтош Kit Heath",
     img: "product.jpg",
     text: "Лот 7677. Винтажные серебряные серьги Макинтош Kit Heath",
@@ -91,8 +91,8 @@ export const products = [
   },
   {
     path: "/product/antikvarnaya-serebryanaya-lozhka-dlya-chaya-trav-angliya-caddy-spoon-19-vek-1853-god-8708/",
-    category: "stolovye-pribory",
-    subcategory: "serebryanye-lozhki",
+    category: ["stolovye-pribory", "Столовые приборы"],
+    subcategory: ["serebryanye-lozhki", "Серебряные ложки"],
     title:
       "Антикварная серебряная ложка для чая трав Англия Caddy Spoon 19 век 1853 год",
     img: "product.jpg",
@@ -101,8 +101,8 @@ export const products = [
   },
   {
     path: "/product/tarelka-vintazhnaya-dekorativnaya-nastennaya-farfor-franklin-mint-bill-bell-noev-kovcheg-two-by-two-8707/",
-    category: "dekorativnye-tarelki",
-    subcategory: "nastennye",
+    category: ["dekorativnye-tarelki", "Декоративные тарелки"],
+    subcategory: ["nastennye", "Настенные"],
     title:
       "Тарелка винтажная декоративная настенная Фарфор Franklin Mint Bill Bell Ноев ковчег Two by Two",
     img: "product.jpg",
@@ -111,7 +111,7 @@ export const products = [
   },
   {
     path: "/product/tarelka-vintazhnaya-dekorativnaya-nastennaya-farfor-knowles-the-four-ancient-elements-ogon-fire-8706/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Тарелка винтажная декоративная настенная Фарфор Knowles The Four Ancient Elements Огонь Fire",
     img: "product.jpg",
@@ -120,7 +120,7 @@ export const products = [
   },
   {
     path: "/product/tarelka-vintazhnaya-dekorativnaya-nastennaya-farfor-knowles-the-four-ancient-elements-voda-water-8705/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Тарелка винтажная декоративная настенная Фарфор Knowles The Four Ancient Elements Вода Water",
     img: "product.jpg",
@@ -129,7 +129,7 @@ export const products = [
   },
   {
     path: "/product/tarelka-vintazhnaya-dekorativnaya-nastennaya-farfor-knowles-the-four-ancient-elements-vozduh-air-8704/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Тарелка винтажная декоративная настенная Фарфор Knowles The Four Ancient Elements Воздух Air",
     img: "product.jpg",
@@ -138,7 +138,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnye-anglijskie-vesy-george-salter-i-co-8703/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title: "Винтажные английские весы George Salter & Co",
     img: "product.jpg",
     text: "Лот 7671. Винтажные английские весы George Salter & Co",
@@ -146,7 +146,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnaya-farforovaya-statuetka-ispaniya-devochka-s-knigoj-lladro-nao-8702/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title: "Винтажная фарфоровая статуэтка Испания Девочка с книгой Lladro NAO",
     img: "product.jpg",
     text: "Лот 7670. Винтажная фарфоровая статуэтка Испания Девочка с книгой Lladro NAO",
@@ -154,7 +154,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnaya-farforovaya-statuetka-dama-s-veerom-angliya-royal-doulton-3002-marilyn-8701/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Винтажная фарфоровая статуэтка Дама с веером Англия Royal Doulton 3002 Marilyn",
     img: "product.jpg",
@@ -163,7 +163,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnaya-farforovaya-statuetka-angliya-figuristka-konki-coalport-the-skater-8700/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Винтажная фарфоровая статуэтка Англия Фигуристка Коньки Coalport The Skater",
     img: "product.jpg",
@@ -172,7 +172,7 @@ export const products = [
   },
   {
     path: "/product/antikvarnyj-farforovyj-kuvshin-dlya-moloka-slivok-molochnik-tuscan-pticy-8699/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Антикварный фарфоровый кувшин для молока сливок молочник Tuscan Птицы",
     img: "product.jpg",
@@ -181,7 +181,7 @@ export const products = [
   },
   {
     path: "/product/antikvarnyj-farforovyj-kofejnyj-set-tuscan-pticy-8698/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title: "Антикварный фарфоровый кофейный сет Tuscan Птицы",
     img: "product.jpg",
     text: "Лот 7666. Антикварный фарфоровый кофейный сет Tuscan Птицы",
@@ -189,7 +189,7 @@ export const products = [
   },
   {
     path: "/product/antikvarnaya-anglijskaya-tarelka-s-ruchkami-mason-s-strathmore-8697/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title: "Антикварная английская тарелка с ручками Mason's Strathmore",
     img: "product.jpg",
     text: "Лот 7665. Антикварная английская тарелка с ручками Mason's Strathmore",
@@ -197,7 +197,7 @@ export const products = [
   },
   {
     path: "/product/antikvarnoe-anglijskoe-blyudo-mason-s-strathmore-8696/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title: "Антикварное английское блюдо Mason's Strathmore",
     img: "product.jpg",
     text: "Лот 7664. Антикварное английское блюдо Mason's Strathmore",
@@ -205,7 +205,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnaya-farforovaya-statuetka-ispaniya-mat-i-doch-mama-lladro-8291-you-are-so-pretty-8695/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Винтажная фарфоровая статуэтка Испания Мать и дочь Мама Lladro 8291 You are So Pretty",
     img: "product.jpg",
@@ -214,7 +214,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnaya-statuetka-angliya-beswick-1218-woodpecker-zelyonyj-dyatel-8694/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title: "Винтажная статуэтка Англия Beswick 1218 Woodpecker Зелёный дятел",
     img: "product.jpg",
     text: "Лот 7662. Винтажная статуэтка Англия Beswick 1218 Woodpecker Зелёный дятел",
@@ -222,7 +222,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnaya-farforovaya-statuetka-ispaniya-lladro-nao-204-girl-with-scarf-devushka-v-platke-s-korzinkoj-cvetov-8693/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Винтажная фарфоровая статуэтка Испания Lladro NAO 204 Girl With Scarf Девушка в платке с корзинкой цветов",
     img: "product.jpg",
@@ -231,7 +231,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnaya-farforovaya-statuetka-angliya-royal-doulton-4240-flower-of-scotland-shotlandiya-8692/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Винтажная фарфоровая статуэтка Англия Royal Doulton 4240 Flower of Scotland Шотландия",
     img: "product.jpg",
@@ -240,7 +240,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnaya-farforovaya-statuetka-dama-v-shlyapke-angliya-royal-doulton-3179-eliza-8691/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Винтажная фарфоровая статуэтка Дама в шляпке Англия Royal Doulton 3179 Eliza",
     img: "product.jpg",
@@ -249,7 +249,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnyj-farforovyj-stakan-angliya-koroleva-viktoriya-1897-god-8690/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title: "Винтажный фарфоровый стакан Англия Королева Виктория 1897 год",
     img: "product.jpg",
     text: "Лот 7658. Винтажный фарфоровый стакан Англия Королева Виктория 1897 год",
@@ -257,7 +257,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnaya-anglijskaya-farforovaya-kruzhka-stockton-and-darlington-railway-1975-god-8689/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Винтажная английская фарфоровая кружка Stockton and Darlington Railway 1975 год",
     img: "product.jpg",
@@ -266,7 +266,7 @@ export const products = [
   },
   {
     path: "/product/antikvarnye-pribory-dlya-ryby-i-rybnyh-blyud-vilka-i-nozh-lopatka-franciya-8688/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title:
       "Антикварные приборы для рыбы и рыбных блюд вилка и нож лопатка Франция",
     img: "product.jpg",
@@ -275,7 +275,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnaya-solonka-perechnica-wmf-8687/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title: "Антикварная солонка перечница WMF",
     img: "product.jpg",
     text: "Лот 7655. Антикварная солонка перечница WMF",
@@ -283,7 +283,7 @@ export const products = [
   },
   {
     path: "/product/vintazhnye-vilki-dlya-ustric-gorham-8686/",
-    category: "statuetki",
+    category: ["statuetki", "Статуэтки"],
     title: "Винтажные вилки для устриц Gorham",
     img: "product.jpg",
     text: "Лот 7654. Винтажные вилки для устриц Gorham",

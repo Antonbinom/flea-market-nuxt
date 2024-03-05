@@ -44,4 +44,10 @@ import { menuLinks } from "@/data/menuLinks";
 .NuxtLink-active {
   font-weight: bold;
 }
+
+@media (max-width: 767.98px) {
+  .menu {
+    display: none;
+  }
+}
 </style>

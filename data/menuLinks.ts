@@ -24,4 +24,9 @@ export const menuLinks = [
     path: "/reviews",
     title: "Отзывы",
   },
+  {
+    name: "basket",
+    path: "/basket",
+    title: "Корзина",
+  },
 ];

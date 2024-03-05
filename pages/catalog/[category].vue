@@ -7,7 +7,7 @@ import { products } from "~/data/products";
 const route = useRoute();
 const filteredProducts = computed(() => {
   return products.filter(
-    (product) => product.category === route.params.category
+    (product) => product.category[0] === route.params.category
   );
 });
 

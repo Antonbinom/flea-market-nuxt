@@ -1,6 +1,6 @@
 <template>
-  <Container>
-    <header>
+  <header>
+    <Container>
       <div class="wrapper">
         <NuxtLink to="/" class="logo" title="Flea-Market.ru">
           <img src="@/assets/logo2.png" alt="Flea-Market.ru" />
@@ -13,7 +13,7 @@
           <li>Подарки</li>
         </ul>
 
-        <a href="tel:+79858864155" class="phone">+7 985 886 41 55</a>
+        <a href="tel:+79999999999" class="phone">+7 999 999 99 99</a>
 
         <NuxtLink to="/search" class="search" title="Поиск по сайту">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.5 17.5">
@@ -33,7 +33,7 @@
             ></line>
           </svg>
         </NuxtLink>
-        <a href="https://flea-market.ru/basket/" class="basket" title="Корзина">
+        <NuxtLink to="/basket" class="basket" title="Корзина">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.5 17.5">
             <path
               class="basket-svg-style basket-svg-edit-round"
@@ -45,7 +45,7 @@
             ></path>
           </svg>
           <span></span>
-        </a>
+        </NuxtLink>
 
         <span class="hamburger">
           <svg
@@ -59,8 +59,8 @@
           </svg>
         </span>
       </div>
-    </header>
-  </Container>
+    </Container>
+  </header>
 </template>
 
 <style scoped>
@@ -168,5 +168,93 @@ header .phone {
 header .search:hover .search-svg-style,
 header .basket:hover .basket-svg-style {
   stroke: rgba(0, 0, 0, 1);
+}
+
+@media (max-width: 767.98px) {
+  header {
+    padding: 40px 0px 25px 0px;
+    border-bottom: 1px solid #000;
+    position: relative;
+  }
+  header .wrapper {
+    display: flex;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -moz-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+  }
+  /*header .logo {
+		font-size: 24px;
+		text-align: left;
+		line-height: 24px;
+		letter-spacing: 0em;
+		padding-right: 12px;
+		flex-grow: 2;
+	}*/
+  header .logo {
+    width: auto;
+    height: auto;
+    flex-grow: 2;
+    margin-top: -20px;
+  }
+  header ul {
+    display: none;
+  }
+  header .search,
+  header .basket {
+    position: static;
+    height: 23px;
+    display: flex;
+    padding: 0px 12px;
+  }
+  header .hamburger {
+    display: flex;
+    padding: 0px 0px 0px 12px;
+    color: #626262;
+    width: 35px;
+  }
+  header .hamburger svg {
+    height: 23px;
+    width: 23px;
+  }
+  header .search {
+    display: flex;
+    width: 45px;
+  }
+  header .basket {
+    display: flex;
+    width: 55px;
+  }
+  header .basket svg {
+    width: auto;
+    height: 23px;
+  }
+  header .search svg {
+    width: auto;
+    height: 23px;
+  }
+  header .contacts {
+    display: block;
+    position: absolute;
+    bottom: 0px;
+    right: 15px;
+  }
+  header .contacts img {
+    width: 30px;
+    height: 30px;
+  }
+
+  header .phone {
+    top: -10px;
+    right: 15px;
+  }
+}
+.hamburger-svg-style {
+  stroke: rgba(117, 117, 117, 1);
+  stroke-width: 1.5;
+  fill: none;
+  will-change: transform;
 }
 </style>

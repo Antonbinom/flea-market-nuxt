@@ -8,11 +8,6 @@
             class="desktop loaded"
             :alt="product.title"
           />
-          <!-- <img
-            src="@/assets/product.jpg"
-            class="mobile loaded"
-            alt="Винтажное серебряное кольцо Англия 1978 год"
-          /> -->
         </span>
         <span class="product-info">
           <span class="middle">
@@ -37,8 +32,6 @@ defineProps({
   grid-template-columns: repeat(3, 1fr);
   gap: 10px;
 }
-/* .product {
-} */
 .product-link {
   display: block;
   position: relative;
@@ -110,5 +103,38 @@ defineProps({
   display: block;
   margin-top: 20px;
   text-decoration: line-through;
+}
+
+@media (max-width: 767.98px) {
+  .products {
+    grid-template-columns: repeat(2, 1fr);
+
+    margin: 0px -10px;
+  }
+  .product {
+    padding: 10px;
+    margin-top: 15px;
+    flex: 0 0 50%;
+  }
+  .product-link {
+    text-decoration: none;
+  }
+
+  .product-info .middle {
+    display: block;
+    text-align: left;
+  }
+  .product-info .title {
+    display: block;
+    margin: 10px 0px 0px 0px;
+    height: 30px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .product-info .price {
+    margin-top: 10px;
+  }
 }
 </style>

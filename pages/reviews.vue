@@ -91,13 +91,5 @@ useHead({
 }
 .reviews img {
   width: 100%;
-  /* opacity: 0;
-  -webkit-transition: opacity 0.3s;
-  -o-transition: opacity 0.3s;
-  -moz-transition: opacity 0.3s;
-  transition: opacity 0.3s; */
 }
-/* .reviews img.loaded {
-  opacity: 1;
-} */
 </style>
