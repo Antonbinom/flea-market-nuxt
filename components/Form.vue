@@ -153,6 +153,8 @@
   .form-info {
     width: 100%;
     border-right: none;
+    margin-top: 0;
+    padding-bottom: 0;
   }
 
   .form-text {

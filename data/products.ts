@@ -27,7 +27,18 @@ export const products = [
     title: "Винтажная фарфоровая статуэтка Дама в зелёной шляпке Goebel",
     img: "product.jpg",
     text: "Лот 7682. Винтажная фарфоровая статуэтка Дама в зелёной шляпке Goebel",
+    lot: 7684,
     price: 16000,
+    description: [
+      '"Spring" Весна.',
+      "Англия, мануфактура Royal Doulton.",
+      "Лимитированная серия “The Millenium Four Seasons” (всего 2000 экземпляров).",
+      "Скульптор Maria King.",
+      "2000 год.",
+      "Фарфор.",
+      "Высота 21,5 см.",
+      "Статуэтка в отличном состоянии.",
+    ],
   },
   {
     path: "/product/vintazhnoe-serebryanoe-kolco-angliya-1978-god",

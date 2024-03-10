@@ -103,4 +103,11 @@ const currentProduct = () => {
   text-decoration: none;
   color: #000;
 }
+
+@media (max-width: 767.98px) {
+  .breadcrumb {
+    font-size: 12px;
+    padding-right: 0px;
+  }
+}
 </style>

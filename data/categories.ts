@@ -262,7 +262,7 @@ export const categories = [
   },
   {
     name: "Фотографии и открытки",
-    path: "/catalog/kashpo",
+    path: "/catalog/fotografii-otkrytki",
     title: "винтажные фотографии и открытки",
   },
   {

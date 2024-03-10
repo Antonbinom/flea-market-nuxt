@@ -108,23 +108,23 @@ defineProps({
 @media (max-width: 767.98px) {
   .products {
     grid-template-columns: repeat(2, 1fr);
-
-    margin: 0px -10px;
+    gap: 20px;
   }
   .product {
-    padding: 10px;
     margin-top: 15px;
     flex: 0 0 50%;
   }
   .product-link {
     text-decoration: none;
   }
-
+  .product-info {
+    position: static;
+  }
   .product-info .middle {
     display: block;
     text-align: left;
   }
-  .product-info .title {
+  .product-title {
     display: block;
     margin: 10px 0px 0px 0px;
     height: 30px;

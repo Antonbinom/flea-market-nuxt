@@ -3,7 +3,7 @@
   <Navbar />
   <Container>
     <main>
-      <Categories />
+      <Categories v-if="!viewport.isLessThan('tablet')" />
       <Breadcrumbs v-if="$route.path !== '/'" />
       <CategoryTitle />
       <Subcategories />
@@ -14,6 +14,14 @@
     <Footer />
   </Container>
 </template>
+
+<script setup>
+const viewport = useViewport();
+
+watch(viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
+  console.log("Breakpoint updated:", oldBreakpoint, "->", newBreakpoint);
+});
+</script>
 
 <style scoped>
 main {

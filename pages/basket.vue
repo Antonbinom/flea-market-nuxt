@@ -9,76 +9,57 @@
         <div class="basket-th summ">Сумма</div>
       </div>
 
-      <div class="basket-row">
+      <div
+        v-for="(product, index) in products"
+        :key="product.lot"
+        class="basket-row"
+      >
         <div class="img">
-          <a
-            href="https://flea-market.ru/product/lot-2703-kremanka-serediny-20-veka-3937/"
-          >
+          <NuxtLink :to="product.path">
             <img src="@/assets/product.jpg" alt="" />
-          </a>
+          </NuxtLink>
         </div>
         <div class="name">
-          <a
-            href="https://flea-market.ru/product/lot-2703-kremanka-serediny-20-veka-3937/"
-            >Лот 2703. Антикварная серебряная креманка сахарница Conquistador</a
-          >
+          <NuxtLink :to="product.path">
+            {{ `Лот ${product.lot} ${product.title}` }}
+          </NuxtLink>
         </div>
-        <div class="price">35 000 руб.</div>
+        <div class="price">{{ product.price }} руб.</div>
         <div class="count">
           <div class="spinner">
-            <a
-              href="https://flea-market.ru/basket/#"
-              class="minus"
-              disabled="disabled"
+            <button
+              @click="product.count > 1 && product.count--"
+              class="count-minus"
             >
-              <svg width="7" height="4" class="form__field_c">
-                <rect width="7" height="1" rx="0.5" ry="0.5"></rect>
-              </svg>
-            </a>
-            <input
-              name="394868456436dbe743e4380554c0493a"
-              value="1"
-              id="count-394868456436dbe743e4380554c0493a"
-            />
-            <a href="https://flea-market.ru/basket/#" class="plus">
-              <svg width="7" height="7" class="form__field_c">
-                <path
-                  d="M6.5 4H4v2.5a.5.5 0 01-1 0V4H.5a.5.5 0 010-1H3V.5a.5.5 0 011 0V3h2.5a.5.5 0 010 1z"
-                ></path>
-              </svg>
-            </a>
-            <span
-              class="available"
-              id="available-394868456436dbe743e4380554c0493a"
-            ></span>
+              -
+            </button>
+            <input class="count-input" :value="product.count" />
+            <button @click="product.count++" class="count-plus">+</button>
+            <span class="available"></span>
           </div>
         </div>
         <div class="summ">
-          <div id="summ-394868456436dbe743e4380554c0493a">
-            <span>35 000</span> руб.
-          </div>
+          <span>{{ product.price * product.count }}</span> руб.
         </div>
 
-        <div class="delete">
-          <a
-            href="https://flea-market.ru/basket/?act=del&amp;id=394868456436dbe743e4380554c0493a"
-          >
-            <svg width="13" height="13">
-              <path
-                d="M4 1h5M1 4h11M2 4l1 8h7l1-8"
-                fill="none"
-                fill-rule="evenodd"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-              ></path>
-            </svg>
-          </a>
-        </div>
+        <button class="delete" @click="products.splice(index, 1)">
+          <svg width="13" height="13">
+            <path
+              d="M4 1h5M1 4h11M2 4l1 8h7l1-8"
+              fill="none"
+              fill-rule="evenodd"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+            ></path>
+          </svg>
+        </button>
       </div>
     </div>
-    <div class="itogo">Итого: <span>35 000 руб.</span></div>
+    <div class="itogo">
+      Итого: <span>{{ totalPrice }} руб.</span>
+    </div>
 
     <div class="checkout">
       <div class="checkout-info">
@@ -101,7 +82,6 @@
               class="form-control input-lg"
               name="name"
               placeholder="Имя*"
-              required=""
             />
           </div>
           <div class="form-group">
@@ -110,7 +90,6 @@
               class="form-control input-lg"
               name="email"
               placeholder="Email*"
-              required=""
             />
           </div>
           <div class="form-group">
@@ -119,7 +98,6 @@
               class="form-control input-lg"
               name="phone"
               placeholder="Телефон*"
-              required=""
             />
           </div>
 
@@ -130,7 +108,18 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useStorage } from "@vueuse/core";
+const products = useStorage("goods", localStorage);
+
+const totalPrice = computed(() => {
+  if (!products.value) return "";
+  return products.value?.reduce(
+    (total, item) => item.price * item.count + total,
+    0
+  );
+});
+</script>
 
 <style scoped>
 .basket-wrapper {
@@ -208,19 +197,28 @@
 }
 .basket-row .delete {
   text-align: right;
-  width: 4%;
+  background: transparent;
+  border: none;
+  margin-left: 20px;
 }
 .basket-row .delete a {
   color: #000;
 }
 .basket-row .spinner {
-  display: block;
+  display: flex;
+  justify-content: space-between;
   width: 80px;
   height: 55px;
   border: 1px solid rgb(204, 204, 204);
   margin: 0px auto;
-  position: relative;
-  padding: 0px 25px;
+  /* position: relative;
+  padding: 0px 25px; */
+}
+.count-plus,
+.count-minus {
+  padding-inline: 10px;
+  background-color: transparent;
+  border: none;
 }
 .basket-row .spinner .minus,
 .basket-row .spinner .plus {

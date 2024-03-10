@@ -2,4 +2,5 @@
 export default defineNuxtConfig({
   css: ["~/assets/styles/style.css"],
   devtools: { enabled: true },
+  modules: ["nuxt-viewport"],
 });

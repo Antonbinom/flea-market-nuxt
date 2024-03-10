@@ -44,7 +44,7 @@
               d="M4.5,5.64C4.5,3,5.59.75,8.25.75S12,3,12,5.64"
             ></path>
           </svg>
-          <span></span>
+          <span v-if="basketCounter > 0">{{ basketCounter }}</span>
         </NuxtLink>
 
         <span class="hamburger">
@@ -62,6 +62,21 @@
     </Container>
   </header>
 </template>
+
+<script setup>
+import { useStorage } from "@vueuse/core";
+const goods = useStorage("goods", localStorage);
+
+const basketCounter = computed(() => {
+  return goods.value.length;
+});
+watch(
+  () => goods.value.length,
+  () => {
+    console.log(`myData changed from oldValue to newValue`);
+  }
+);
+</script>
 
 <style scoped>
 header {
