@@ -17,10 +17,6 @@
 
 <script setup>
 const viewport = useViewport();
-
-watch(viewport.breakpoint, (newBreakpoint, oldBreakpoint) => {
-  console.log("Breakpoint updated:", oldBreakpoint, "->", newBreakpoint);
-});
 </script>
 
 <style scoped>

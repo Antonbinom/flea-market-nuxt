@@ -42,8 +42,10 @@
 </template>
 
 <script setup>
+import { getData, setData } from "nuxt-storage/local-storage";
 import { products } from "@/data/products";
 import { useRoute } from "vue-router";
+const goodsInBasket = useGoodsInBasket();
 
 const route = useRoute();
 const product = computed(() => {
@@ -61,16 +63,17 @@ const addToBasket = () => {
     path: product.value.path,
   };
 
-  let goods = JSON.parse(localStorage.getItem("goods") || "[]");
+  let goods = getData("products") || [];
 
   const existingGoodIndex = goods.findIndex((item) => item.lot === good.lot);
   if (existingGoodIndex !== -1) {
     goods[existingGoodIndex].count++;
   } else {
     goods.push(good);
+    goodsInBasket.value++;
   }
 
-  localStorage.setItem("goods", JSON.stringify(goods));
+  setData("products", goods);
 };
 </script>
 

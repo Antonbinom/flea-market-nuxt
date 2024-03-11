@@ -1,5 +1,5 @@
 <template>
-  <div class="basket">
+  <div v-if="products?.length" class="basket">
     <div class="basket-wrapper">
       <h1 class="basket-title">Корзина</h1>
       <div class="basket-head">
@@ -28,13 +28,29 @@
         <div class="count">
           <div class="spinner">
             <button
-              @click="product.count > 1 && product.count--"
+              @click="
+                product.count > 1 && product.count--;
+                changeCount();
+              "
               class="count-minus"
             >
               -
             </button>
-            <input class="count-input" :value="product.count" />
-            <button @click="product.count++" class="count-plus">+</button>
+            <input
+              class="count-input"
+              :value="product.count"
+              @change="changeCount($event, index)"
+              @input="validateInput($event, index)"
+            />
+            <button
+              @click="
+                product.count++;
+                changeCount();
+              "
+              class="count-plus"
+            >
+              +
+            </button>
             <span class="available"></span>
           </div>
         </div>
@@ -42,7 +58,7 @@
           <span>{{ product.price * product.count }}</span> руб.
         </div>
 
-        <button class="delete" @click="products.splice(index, 1)">
+        <button class="delete" @click="removeFromBasket(index)">
           <svg width="13" height="13">
             <path
               d="M4 1h5M1 4h11M2 4l1 8h7l1-8"
@@ -106,18 +122,41 @@
       </div>
     </div>
   </div>
+  <div v-else class="empty-basket">
+    <div class="empty-basket__title">Корзина пуста</div>
+    <NuxtLink class="empty-basket__link" to="/">Продолжить покупки</NuxtLink>
+  </div>
 </template>
 
 <script setup>
-import { useStorage } from "@vueuse/core";
-const products = useStorage("goods", localStorage);
+import { getData, setData } from "nuxt-storage/local-storage";
+const products = ref();
+const goodsInBasket = useGoodsInBasket();
 
-const totalPrice = computed(() => {
-  if (!products.value) return "";
-  return products.value?.reduce(
-    (total, item) => item.price * item.count + total,
-    0
-  );
+const totalPrice = computed(() =>
+  products.value?.reduce((total, item) => item.price * item.count + total, 0)
+);
+
+const changeCount = (event, index) => {
+  event && (products.value[index].count = event.target.value);
+  setData("products", products.value);
+};
+
+const validateInput = (event) => {
+  let inputValue = event.target.value;
+  inputValue = inputValue.replace(/[^0-9]/g, "");
+  event.target.value = inputValue;
+  if (inputValue === "") event.target.value = "1";
+};
+
+const removeFromBasket = (index) => {
+  products.value.splice(index, 1);
+  setData("products", products.value);
+  goodsInBasket.value--;
+};
+
+onMounted(() => {
+  products.value = getData("products");
 });
 </script>
 
@@ -200,9 +239,8 @@ const totalPrice = computed(() => {
   background: transparent;
   border: none;
   margin-left: 20px;
-}
-.basket-row .delete a {
   color: #000;
+  cursor: pointer;
 }
 .basket-row .spinner {
   display: flex;
@@ -211,14 +249,13 @@ const totalPrice = computed(() => {
   height: 55px;
   border: 1px solid rgb(204, 204, 204);
   margin: 0px auto;
-  /* position: relative;
-  padding: 0px 25px; */
 }
 .count-plus,
 .count-minus {
   padding-inline: 10px;
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 .basket-row .spinner .minus,
 .basket-row .spinner .plus {
@@ -326,6 +363,39 @@ const totalPrice = computed(() => {
   background-color: rgba(0, 0, 0, 0.7);
   border: none;
   color: #fff;
+}
+
+.empty-basket {
+  font-family: Arial;
+  font-size: 13px;
+  text-align: center;
+  padding: 100px 0px 100px 0px;
+}
+.empty-basket__title {
+  margin-bottom: 40px;
+}
+.empty-basket__link {
+  display: inline-block;
+  height: 55px;
+  line-height: 55px;
+  text-align: center;
+  border: 1px solid #000;
+  background: none;
+  letter-spacing: 0.6px;
+  font-size: 12px;
+  padding: 0px 20px;
+  -webkit-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  transition: color 0.3s;
+  text-decoration: none;
+  border-radius: 10px;
+  color: #000;
+}
+.empty-basket__link:hover {
+  background: #4c4c4c;
+  color: #fff;
+  border-color: #4c4c4c;
 }
 
 @media (max-width: 767.98px) {
