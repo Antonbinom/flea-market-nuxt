@@ -47,7 +47,7 @@
           <span v-if="goodsInBasket">{{ goodsInBasket }}</span>
         </NuxtLink>
 
-        <span class="hamburger">
+        <span class="hamburger" @click="isMenuOpened = true">
           <svg
             height="20px"
             xmlns="http://www.w3.org/2000/svg"
@@ -67,6 +67,7 @@
 import { getData } from "nuxt-storage/local-storage";
 const goods = getData("products");
 const goodsInBasket = useGoodsInBasket(goods?.length);
+const isMenuOpened = useOpenMenu();
 </script>
 
 <style scoped>
