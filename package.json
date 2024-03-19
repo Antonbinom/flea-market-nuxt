@@ -10,13 +10,17 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@prisma/client": "^5.11.0",
     "@vueuse/nuxt": "^10.9.0",
+    "cyrillic-to-translit-js": "^3.2.1",
+    "mongodb": "^6.5.0",
     "nuxt": "^3.10.3",
     "nuxt-storage": "^1.2.2",
     "vue": "^3.4.19",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "nuxt-viewport": "^2.1.4"
+    "nuxt-viewport": "^2.1.4",
+    "prisma": "^5.11.0"
   }
 }
