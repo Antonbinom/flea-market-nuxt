@@ -1,3 +1,4 @@
+import { handleNotAllowed } from "~/server/helpers/handleErrors";
 import { createCategory } from "../../controllers/categoriesController";
 
 interface CategoryBody {
@@ -8,12 +9,7 @@ interface CategoryBody {
 export default defineEventHandler(async (event) => {
   const method = event.method;
 
-  if (method !== "POST") {
-    return sendError(
-      event,
-      createError({ statusCode: 405, statusMessage: "Method Not Allowed" })
-    );
-  }
+  if (method !== "POST") return handleNotAllowed(event);
 
   const body = (await readBody(event)) as CategoryBody;
 

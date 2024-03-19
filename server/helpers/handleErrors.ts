@@ -11,3 +11,10 @@ export const handleAlreadyExists = (name: string, type: string) => {
     statusMessage: `The ${type} ${name} already exists.`,
   });
 };
+
+export const handleNotAllowed = (event: any) => {
+  return sendError(
+    event,
+    createError({ statusCode: 405, statusMessage: "Method Not Allowed" })
+  );
+};

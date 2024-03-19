@@ -1,6 +1,7 @@
 import { SubcategoryType } from "@prisma/client";
 import { updateCategory } from "../../controllers/categoriesController";
 import { Subcategory } from "../../controllers/subcategoriesConroller";
+import { handleNotAllowed } from "~/server/helpers/handleErrors";
 
 interface UpdateCategoryBody {
   name?: string;
@@ -11,12 +12,8 @@ interface UpdateCategoryBody {
 export default defineEventHandler(async (event) => {
   const method = event.method;
 
-  if (method !== "PUT") {
-    return sendError(
-      event,
-      createError({ statusCode: 405, statusMessage: "Method Not Allowed" })
-    );
-  }
+  if (method !== "PUT") return handleNotAllowed(event);
+
   const { id } = event.context.params;
   const body = (await readBody(event)) as UpdateCategoryBody;
 

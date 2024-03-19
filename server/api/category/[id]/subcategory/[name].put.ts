@@ -1,3 +1,4 @@
+import { handleNotAllowed } from "~/server/helpers/handleErrors";
 import { updateSubcategory } from "../../../../controllers/subcategoriesConroller";
 
 interface UpdateSubcategoryBody {
@@ -9,12 +10,7 @@ interface UpdateSubcategoryBody {
 export default defineEventHandler(async (event) => {
   const method = event.method;
 
-  if (method !== "PUT") {
-    return sendError(
-      event,
-      createError({ statusCode: 405, statusMessage: "Method Not Allowed" })
-    );
-  }
+  if (method !== "PUT") return handleNotAllowed(event);
 
   const { id, name } = event.context.params;
 
