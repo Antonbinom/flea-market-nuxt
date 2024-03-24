@@ -3,13 +3,15 @@
 </template>
 
 <script setup>
-import { products } from "~/data/products";
+const products = await useFetchProducts();
+const category = useCurrentCategory();
+
 const route = useRoute();
 const filteredProducts = computed(() => {
-  return products.filter((product) => {
+  return products.value.filter((product) => {
     return (
-      product.category[0] === route.params.category &&
-      product.subcategory?.[0] === route.params.subcategory
+      product.categoryId === category.value?.id &&
+      product.subcategory === route.params.subcategory
     );
   });
 });

@@ -17,7 +17,7 @@ model Product {
   id          String   @id @default(auto()) @map("_id") @db.ObjectId
   path        String   @unique
   category    Category @relation(fields: [categoryId], references: [id])
-  Subcategory String
+  subcategory String
   title       String   @unique
   images      String[]
   text        String

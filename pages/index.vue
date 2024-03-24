@@ -9,5 +9,6 @@ definePageMeta({
 useHead({
   title: "ВИНТАЖНЫЕ НАХОДКИ С БЛОШИНЫХ РЫНКОВ РАЗНЫХ СТРАН",
 });
-import { products } from "@/data/products";
+
+const products = await useFetchProducts();
 </script>

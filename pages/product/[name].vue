@@ -43,15 +43,12 @@
 
 <script setup>
 import { getData, setData } from "nuxt-storage/local-storage";
-import { products } from "@/data/products";
 import { useRoute } from "vue-router";
 const goodsInBasket = useGoodsInBasket();
 
 const route = useRoute();
-const product = computed(() => {
-  return products.find((product) => product.path.includes(route.params.name));
-});
 
+const product = await useFetchProductByName(route.params.name);
 const addToBasket = () => {
   if (!product.value) return;
   const good = {

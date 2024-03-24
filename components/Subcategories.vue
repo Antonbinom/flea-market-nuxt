@@ -1,26 +1,24 @@
 <template>
-  <ul v-if="subcategories" class="subcategories">
+  <ul v-if="category?.subcategories" class="subcategories">
     <li
-      v-for="subcategory in subcategories"
-      :key="subcategory"
+      v-for="subcategory in category.subcategories"
+      :key="subcategory.path"
       class="subcategories-item"
     >
-      <NuxtLink :to="subcategory.path" class="subcategories-item__link">{{
-        subcategory.name
-      }}</NuxtLink>
+      <NuxtLink
+        :to="`${$route.params.subcategory ? '' : category.path + '/'}${
+          subcategory.path
+        }`"
+        class="subcategories-item__link"
+      >
+        {{ subcategory.name }}
+      </NuxtLink>
     </li>
   </ul>
 </template>
 
 <script setup>
-import { categories } from "@/data/categories";
-const route = useRoute();
-
-const subcategories = computed(() => {
-  return categories.find((category) =>
-    category.path.includes(route.params.category)
-  )?.subcategories;
-});
+const category = useCurrentCategory();
 </script>
 
 <style scoped>

@@ -1,19 +1,41 @@
 <template>
   <ul class="categories">
+    <li class="categories-item">
+      <NuxtLink to="/" class="categories-item__link">Все товары</NuxtLink>
+    </li>
     <li
       v-for="category in categories"
       :key="category.path"
       class="categories-item"
     >
-      <NuxtLink :to="category.path" class="categories-item__link">{{
-        category.name
-      }}</NuxtLink>
+      <NuxtLink
+        :to="`/catalog/${category.path}`"
+        class="categories-item__link"
+        >{{ category.name }}</NuxtLink
+      >
     </li>
   </ul>
 </template>
 
 <script setup>
-import { categories } from "@/data/categories";
+const route = useRoute();
+
+const { data: categories } = await useFetchCategories();
+
+const currentCategory = computed(() => {
+  return categories.value.find((item) => item.path === route.params.category);
+});
+
+const currentCategoryState = useCurrentCategory(currentCategory.value);
+
+watch(
+  () => currentCategory.value,
+  () => (currentCategoryState.value = currentCategory.value)
+);
+
+onMounted(() => {
+  currentCategoryState.value = currentCategory.value;
+});
 </script>
 
 <style scoped>

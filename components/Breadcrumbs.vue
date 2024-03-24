@@ -1,5 +1,5 @@
 <template>
-  <ol class="breadcrumb" itemtype="http://schema.org/BreadcrumbList">
+  <ol class="breadcrumb">
     <li class="breadcrumb-item">
       <NuxtLink to="/">
         Прилавок
@@ -9,10 +9,17 @@
 
     <li
       class="breadcrumb-item"
-      v-for="point in currentProduct()"
+      v-for="point in breadcrumbsPoints"
       :key="point.name"
     >
-      <NuxtLink :to="point.path" v-if="point.path">
+      <NuxtLink
+        :to="
+          point.path === currentCategory.path
+            ? '/catalog/' + point.path
+            : point.path
+        "
+        v-if="point.path"
+      >
         {{ point.name }}
       </NuxtLink>
       <span v-if="!point.path">{{ point.name }}</span>
@@ -21,54 +28,12 @@
 </template>
 
 <script setup>
-import { categories } from "@/data/categories";
+import { computedAsync } from "@vueuse/core";
 import { menuLinks } from "@/data/menuLinks";
-import { products } from "@/data/products";
-
 const route = useRoute();
+const currentCategory = useCurrentCategory();
 
-const currentProduct = () => {
-  if (route.path.includes("product")) {
-    const product = products.find((product) => product.path === route.path);
-    return [
-      {
-        path: `/catalog/${product.category[0]}`,
-        name: product.category[1],
-      },
-      ...(product.subcategory
-        ? [
-            {
-              path: `/catalog/${product.category[0]}/${product.subcategory[0]}`,
-              name: product.subcategory[1],
-            },
-          ]
-        : []),
-      {
-        name: product?.title,
-      },
-    ];
-  }
-  if (route.path.includes("catalog")) {
-    const category = categories.find((item) =>
-      item.path.includes(route.params.category)
-    );
-    const subcategory = category?.subcategories?.find((sc) =>
-      sc.path.includes(route.params.subcategory)
-    );
-    return [
-      {
-        path: subcategory ? category?.path : "",
-        name: category?.name,
-      },
-      ...(subcategory
-        ? [
-            {
-              name: subcategory?.name,
-            },
-          ]
-        : []),
-    ];
-  }
+const currentPageBreadcrumbs = () => {
   const currentPage = menuLinks.find((link) => link.path === route.path);
   return [
     {
@@ -76,6 +41,59 @@ const currentProduct = () => {
     },
   ];
 };
+const catalogBreadcrumbs = () => {
+  const subcategory = currentCategory.value?.subcategories?.find((sc) =>
+    sc.path.includes(route.params.subcategory)
+  );
+  return [
+    {
+      path: subcategory ? currentCategory.value?.path : "",
+      name: currentCategory.value?.name,
+    },
+    ...(subcategory
+      ? [
+          {
+            name: subcategory?.name,
+          },
+        ]
+      : []),
+  ];
+};
+
+const productBreadcrumbs = async () => {
+  const product = await useFetchProductByName(route.params.name);
+  const category = await useFetchCategoryByName(product.value.categoryId);
+  return [
+    {
+      path: `/catalog/${category.value.path}`,
+      name: category.value.name,
+    },
+    ...(product.subcategory
+      ? [
+          {
+            path: `/catalog/${category.value.path}/${product.subcategory}`,
+            name: product.subcategory,
+          },
+        ]
+      : []),
+    {
+      name: product.value?.title,
+    },
+  ];
+};
+
+const breadcrumbsPoints = computedAsync(
+  async () => {
+    if (route.path.includes("product")) {
+      return productBreadcrumbs();
+    }
+    if (route.path.includes("catalog")) {
+      return catalogBreadcrumbs();
+    }
+    return currentPageBreadcrumbs();
+  },
+  null // initial state
+);
 </script>
 
 <style>

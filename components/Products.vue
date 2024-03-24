@@ -1,7 +1,11 @@
 <template>
   <div class="products">
-    <div class="product" v-for="product in products" :key="product.path">
-      <NuxtLink class="product-link" :to="product.path" :title="product.title">
+    <div class="product" v-for="product in products" :key="product.id">
+      <NuxtLink
+        class="product-link"
+        :to="`/product/${product.path}`"
+        :title="product.title"
+      >
         <span class="product-image">
           <img
             src="@/assets/product.jpg"

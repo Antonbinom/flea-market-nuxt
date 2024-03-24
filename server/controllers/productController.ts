@@ -25,14 +25,14 @@ export const createProduct = async (data: Product): Promise<any> => {
 };
 
 export const updateProduct = async (
-  id: string,
+  path: string,
   data: EditedProduct
 ): Promise<any> => {
   const existedProduct = await prisma.product.findUnique({
-    where: { id },
+    where: { path },
   });
 
-  if (!existedProduct) handleNotFound(id, "product");
+  if (!existedProduct) handleNotFound(path, "product");
 
   const productData: any = { ...data };
 
@@ -41,23 +41,23 @@ export const updateProduct = async (
   }
 
   return await prisma.product.update({
-    where: { id },
+    where: { path },
     data: productData,
   });
 };
 
-export const deleteProduct = async (id: string): Promise<any> => {
-  const product = await prisma.product.findUnique({ where: { id } });
+export const deleteProduct = async (path: string): Promise<any> => {
+  const product = await prisma.product.findUnique({ where: { path } });
 
-  if (!product) handleNotFound(id, "product");
+  if (!product) handleNotFound(path, "product");
 
-  return await prisma.product.delete({ where: { id } });
+  return await prisma.product.delete({ where: { path } });
 };
 
-export const getProductByID = async (id: string): Promise<any> => {
-  const product = await prisma.product.findUnique({ where: { id } });
+export const getProductByName = async (path: string): Promise<any> => {
+  const product = await prisma.product.findUnique({ where: { path } });
 
-  if (!product) handleNotFound(id, "product");
+  if (!product) handleNotFound(path, "product");
 
   return product;
 };

@@ -1,20 +1,20 @@
 <template>
-  <h1 class="h1-cat">{{ categoryTitle }}</h1>
+  <h1 class="h1-cat">{{ title }}</h1>
 </template>
 
 <script setup>
-import { categories } from "@/data/categories";
 const route = useRoute();
+const category = useCurrentCategory();
 
-const categoryTitle = computed(() => {
-  if (route.params.subcategory) {
-    return categories
-      .find((category) => category.path.includes(route.params.category))
-      ?.subcategories.find((subcategory) =>
-        subcategory.path.includes(route.params.subcategory)
-      ).title;
+const title = computed(() => {
+  if (!route.params.category) {
+    return "Винтажные находки с блошиных рынков разных стран";
+  } else if (route.params.subcategory) {
+    return category.value?.subcategories?.find(
+      (subcategory) => subcategory.path === route.params.subcategory
+    )?.title;
   } else {
-    return categories.find((category) => category.path === route.path)?.title;
+    return category.value?.title;
   }
 });
 </script>

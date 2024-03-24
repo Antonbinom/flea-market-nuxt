@@ -3,11 +3,12 @@
 </template>
 
 <script setup>
-import { products } from "~/data/products";
-const route = useRoute();
+const products = await useFetchProducts();
+const category = useCurrentCategory();
+
 const filteredProducts = computed(() => {
-  return products.filter(
-    (product) => product.category[0] === route.params.category
+  return products.value.filter(
+    (product) => product.categoryId === category.value?.id
   );
 });
 

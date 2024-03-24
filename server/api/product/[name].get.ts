@@ -1,12 +1,12 @@
 import { handleNotAllowed } from "~/server/helpers/handleErrors";
-import { getProductByID } from "../../controllers/productController";
+import { getProductByName } from "../../controllers/productController";
 
 export default defineEventHandler(async (event) => {
   const method = event.method;
 
   if (method !== "GET") return handleNotAllowed(event);
 
-  const { id } = event.context.params;
+  const { name } = event.context.params;
 
-  return await getProductByID(id);
+  return await getProductByName(name);
 });
