@@ -3,14 +3,15 @@ import prisma from "../client";
 import { handleNotFound } from "../helpers/handleErrors";
 
 export interface Product {
-  category: string;
+  categoryId: string;
   subcategory?: string;
   title: string;
   images: string[];
-  text: string;
+  previewDescription: string;
   lot: number;
   price: number;
   description: string[];
+  count: number;
 }
 
 interface EditedProduct extends Partial<Product> {}
@@ -46,12 +47,12 @@ export const updateProduct = async (
   });
 };
 
-export const deleteProduct = async (path: string): Promise<any> => {
-  const product = await prisma.product.findUnique({ where: { path } });
+export const deleteProduct = async (name: string): Promise<any> => {
+  const product = await prisma.product.findUnique({ where: { path: name } });
 
-  if (!product) handleNotFound(path, "product");
+  if (!product) handleNotFound(name, "product");
 
-  return await prisma.product.delete({ where: { path } });
+  return prisma.product.delete({ where: { path: name } });
 };
 
 export const getProductByName = async (path: string): Promise<any> => {

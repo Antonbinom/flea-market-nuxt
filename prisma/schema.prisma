@@ -14,19 +14,20 @@ datasource db {
 }
 
 model Product {
-  id          String   @id @default(auto()) @map("_id") @db.ObjectId
-  path        String   @unique
-  category    Category @relation(fields: [categoryId], references: [id])
-  subcategory String
-  title       String   @unique
-  images      String[]
-  text        String
-  lot         Int      @unique
-  price       Int
-  description String[]
-  created_at  DateTime @default(now())
-  updated_at  DateTime @updatedAt
-  categoryId  String   @db.ObjectId
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  path               String   @unique
+  category           Category @relation(fields: [categoryId], references: [id])
+  subcategory        String
+  title              String   @unique
+  images             String[]
+  previewDescription String
+  lot                Int      @unique
+  price              Int
+  description        String[]
+  count              Int
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+  categoryId         String   @db.ObjectId
 }
 
 model Category {

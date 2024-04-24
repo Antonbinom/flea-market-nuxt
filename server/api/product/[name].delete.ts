@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
 
   if (method !== "DELETE") return handleNotAllowed(event);
 
-  const { id } = event.context.params;
+  const { name } = event.context.params;
 
-  return await deleteProduct(id);
+  return await deleteProduct(name);
 });

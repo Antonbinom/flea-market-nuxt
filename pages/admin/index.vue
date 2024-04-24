@@ -1,10 +1,11 @@
 <template>
-  <div class="admin-w">admin.vue</div>
+  <div class="admin">admin.vue</div>
 </template>
 
 <script setup>
 definePageMeta({
-  layout: "",
+  layout: "admin",
+  // middleware: ["auth"],
 });
 </script>
 
