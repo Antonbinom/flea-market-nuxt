@@ -14,7 +14,7 @@
     >
       <NuxtLink
         :to="
-          point.path === currentCategory.path
+          point.path === currentCategory?.path
             ? '/catalog/' + point.path
             : point.path
         "
@@ -84,10 +84,10 @@ const productBreadcrumbs = async () => {
 
 const breadcrumbsPoints = computedAsync(
   async () => {
-    if (route.path.includes("product")) {
+    if (route.path.includes("/product/")) {
       return productBreadcrumbs();
     }
-    if (route.path.includes("catalog")) {
+    if (route.path.includes("/catalog")) {
       return catalogBreadcrumbs();
     }
     return currentPageBreadcrumbs();

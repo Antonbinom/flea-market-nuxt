@@ -30,19 +30,27 @@
     <div class="product-info">
       <div class="product-info__input">
         <h5 class="product-info__input-title">Заголовок</h5>
-        <input type="text" v-model="productData.title" />
+        <input
+          placeholder="Введите название товара"
+          type="text"
+          v-model="product.title"
+        />
       </div>
       <div class="product-info__input">
         <h5 class="product-info__input-title">Лот</h5>
-        <input type="number" v-model="productData.lot" />
+        <input type="number" v-model="product.lot" />
       </div>
       <div class="product-info__input">
         <h5 class="product-info__input-title">Цена</h5>
-        <input type="number" v-model="productData.price" />
+        <input
+          placeholder="Введите стоимость товара"
+          type="number"
+          v-model="product.price"
+        />
       </div>
       <div class="product-info__input">
         <h5 class="product-info__input-title">Категория</h5>
-        <select v-model="productData.categoryId" @change="resetSubategory">
+        <select v-model="product.categoryId" @change="resetSubategory">
           <option v-for="category in categories" :value="category.id">
             {{ category.title }}
           </option>
@@ -53,7 +61,7 @@
         v-if="selectedCategory?.subcategories.length"
       >
         <h5 class="product-info__input-title">Подкатегория</h5>
-        <select v-model="productData.subcategory">
+        <select v-model="product.subcategory">
           <option value=""></option>
           <option
             v-for="subcategory in selectedCategory.subcategories"
@@ -65,18 +73,22 @@
       </div>
       <div class="product-info__input">
         <h5 class="product-info__input-title">Краткое описание</h5>
-        <input type="text" v-model="productData.previewDescription" />
+        <input
+          placeholder="Введите краткое описание"
+          type="text"
+          v-model="product.previewDescription"
+        />
       </div>
       <div class="product-info__description">
         <h5 class="product-info__input-title">Описание</h5>
         <div
-          v-for="(item, index) in productData.description"
-          :key="index"
+          v-for="(item, index) in product.description"
+          :key="`${index}`"
           class="product-info__input description-input"
         >
           <input
             placeholder="Введите текст описания"
-            v-model="productData.description[index]"
+            v-model="product.description[index]"
           />
           <button
             class="description-input__remove"
@@ -91,22 +103,22 @@
 
       <div class="product-info__input">
         <h5 class="product-info__input-title">Количество</h5>
-        <input type="number" v-model="productData.count" />
+        <input type="number" v-model="product.count" />
       </div>
     </div>
     <div class="product-buttons">
       <button
-        :disabled="!isDataWasChanged"
+        :disabled="!isProductDataValid"
         class="product-btn product-btn__change"
-        @click="saveChanges"
+        @click="createProduct"
       >
         Сохранить
       </button>
       <button
         class="product-btn product-btn__delete"
-        @click="deleteProduct(product.path)"
+        @click="$router.push('/admin/products')"
       >
-        Удалить
+        Назад
       </button>
     </div>
   </div>
@@ -119,46 +131,56 @@ definePageMeta({
 
 const router = useRouter();
 const route = useRoute();
-const product = await useFetchProductByName(route.params.name);
 
 const { data: categories } = await useFetchCategories();
 
-const productData = ref(Object.assign({}, product.value));
+const product = reactive({
+  // title: "",
+  // lot: null,
+  // price: 0,
+  images: [],
+  // previewDescription: "",
+  description: [""],
+  count: 2,
+  categoryId: "",
+  subcategory: "",
+});
+
+const isProductDataValid = computed(() => {
+  if (
+    product.title &&
+    product.lot &&
+    product.price &&
+    product.previewDescription &&
+    product.categoryId
+  ) {
+    return true;
+  }
+});
+
 const selectedCategory = computed(() => {
   return categories?.value?.find(
-    (category) => category.id === productData.value.categoryId
+    (category) => category.id === product.categoryId
   );
 });
-const isDataWasChanged = computed(() => {
-  return JSON.stringify(product.value) !== JSON.stringify(productData.value);
-});
-
-const saveChanges = async () => {
-  const validProdutData = productData.value;
-  delete validProdutData.id;
-  delete validProdutData.created_at;
-  delete validProdutData.updated_at;
-  await $fetch(`/api/product/${product.value.path}`, {
-    method: "PUT",
-    body: validProdutData,
-  });
-};
-
-const deleteProduct = async (path) => {
-  await $fetch(`/api/product/${path}`, { method: "DELETE" });
-  router.push("/admin/products");
-};
-
 const resetSubategory = () => {
-  productData.value.subcategory = "";
+  product.subcategory = "";
 };
 
 const addDescriptionItem = () => {
-  productData.value.description.push("");
+  product.description.push("");
 };
 
 const removeDescriptionItem = (index) => {
-  productData.value.description.splice(index, 1);
+  product.description.splice(index, 1);
+};
+
+const createProduct = async () => {
+  const data = await $fetch(`/api/product/add`, {
+    method: "POST",
+    body: product,
+  });
+  router.push(`/admin/products/${data.path}`);
 };
 </script>
 
@@ -215,6 +237,7 @@ select {
   border: none;
   border-radius: 5px;
 }
+
 .product-info__input-title {
   margin-bottom: 5px;
 }
@@ -262,12 +285,6 @@ select {
   color: #ffffff;
   border: none;
 }
-.product-btn__shop {
-  background-color: rgb(0, 0, 0);
-  color: #ffffff;
-  border: none;
-}
-
 .product-info__text,
 .product-info__text p {
   font-size: 14px;

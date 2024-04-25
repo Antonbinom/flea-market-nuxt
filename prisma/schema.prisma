@@ -39,8 +39,45 @@ model Category {
   product       Product[]
 }
 
+model Order {
+  id           String           @id @default(auto()) @map("_id") @db.ObjectId
+  products     String[]
+  userContacts UserContactsType
+  totalPrice   Int
+  Status       OrderStatus
+}
+
+model Review {
+  id    String @id @default(auto()) @map("_id") @db.ObjectId
+  url   String @unique
+  title String
+}
+
+model Message {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  name     String
+  contacts String
+  text     String
+}
+
 type SubcategoryType {
   path  String
   name  String
   title String
+}
+
+type UserContactsType {
+  name  String
+  phone String
+  email String
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  CANCELED
+  AWAITING_PAYMENT
+  PAID
+  IN_DELIVERY
+  DELIVERED
 }
