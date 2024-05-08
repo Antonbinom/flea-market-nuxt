@@ -52,7 +52,7 @@
         <h5 class="product-info__input-title">Категория</h5>
         <select v-model="product.categoryId" @change="resetSubategory">
           <option v-for="category in categories" :value="category.id">
-            {{ category.title }}
+            {{ category.name }}
           </option>
         </select>
       </div>

@@ -45,10 +45,11 @@
 </template>
 
 <script setup>
-import { products } from "@/data/products";
 definePageMeta({
   layout: "search",
 });
+const products = await useFetchProducts();
+
 const inputValue = ref("");
 const searchValue = ref("");
 const setSeachValue = () => {
@@ -56,7 +57,7 @@ const setSeachValue = () => {
   searchValue.value = inputValue.value;
 };
 const filteredProducts = computed(() => {
-  return products.filter((product) => {
+  return products.value.filter((product) => {
     if (product.description) {
       return product.description.some((item) =>
         item.toLowerCase().includes(searchValue.value.toLowerCase())

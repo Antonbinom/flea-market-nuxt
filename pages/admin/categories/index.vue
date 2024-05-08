@@ -6,7 +6,7 @@
       class="categories-item"
     >
       <NuxtLink
-        :to="`/admin/categories/${category.path}`"
+        :to="`/admin/categories/${category.id}`"
         class="categories-item__link"
         >{{ category.name }}</NuxtLink
       >

@@ -15,7 +15,7 @@
         </span>
         <span class="product-info">
           <span class="middle">
-            <span class="product-title">{{ product.text }}</span>
+            <span class="product-title">{{ product.previewDescription }}</span>
             <span class="product-price">{{ product.price }} руб.</span>
           </span>
         </span>
